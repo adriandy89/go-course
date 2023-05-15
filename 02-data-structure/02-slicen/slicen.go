@@ -26,9 +26,14 @@ func main() {
 	// TODO - Long, Capacity, Memory Reference
 	// TODO - When cap == len, duplicate cap and change memory reference
 	numbers := []int{1, 2, 3}
+	subNumbers := numbers[:2]
 	fmt.Printf("Len: %d, Capac: %v, Memory Ref: %p \n", len(numbers), cap(numbers), numbers)
 	numbers = append(numbers, 4)
+	numbers[1] = 10
+	fmt.Println(numbers)
 	fmt.Printf("Len: %d, Capac: %v, Memory Ref: %p \n", len(numbers), cap(numbers), numbers) // change
+	fmt.Println(subNumbers)
+	fmt.Printf("Sub - Len: %d, Capac: %v, Memory Ref: %p \n", len(subNumbers), cap(subNumbers), subNumbers) // different, don't change
 	numbers = append(numbers, 5)
 	fmt.Printf("Len: %d, Capac: %v, Memory Ref: %p \n", len(numbers), cap(numbers), numbers) // change
 	numbers = append(numbers, 6)
