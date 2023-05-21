@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {{ template "header" }}
+    <h1>Hello from Template</h1>
+    <h3>Users:</h3>
+    <ol>
+        <li>{{ .Username }}, edad: {{ .Age }}</li>
+    </ol>
+
+    <!-- Variables -->
+    {{ with $valor := "Test Variable"}}
+        <p> {{ $valor }} </p>
+    {{ end }}
+
+    <!-- Logical Operator
+        not !
+        and &&
+        or  ||
+    -->
+
+    {{ if not .Active }}
+        <p>User Inactive</p>
+    {{ else }}
+        <p>User Active</p>
+    {{ end }}
+
+    {{ if (and .Active .Admin)}}
+        <p>User Administrator</p>
+    {{ end }}
+
+    <!-- Conditional Operator
+        eq  ==
+        ne  !=
+        lt  <
+        le  <=
+        gt  >
+        ge  >=
+    -->
+    {{ if gt .Age 30 }}
+        <p> Age > 30 </p>
+    {{ else }}
+        <p> Age <= 30 </p>
+    {{ end }}
+
+    <ul>
+        {{ range .Courses }}
+            <li>{{ .Name }}</li>
+        {{ end }}
+    </ul>
+    {{ template "footer" }}
+
+</body>
+
+</html>
