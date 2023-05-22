@@ -7,7 +7,7 @@ import (
 )
 
 func sendData(rw http.ResponseWriter, data interface{}, status int) {
-	rw.Header().Set("Content-Type", "aplication/json")
+	rw.Header().Set("Content-Type", "application/json")
 	rw.WriteHeader(status)
 
 	output, _ := json.Marshal(&data)
@@ -16,5 +16,5 @@ func sendData(rw http.ResponseWriter, data interface{}, status int) {
 
 func sendError(rw http.ResponseWriter, status int) {
 	rw.WriteHeader(status)
-	fmt.Fprintln(rw, "Resouece Not Found")
+	fmt.Fprintln(rw, "Resource Not Found")
 }
